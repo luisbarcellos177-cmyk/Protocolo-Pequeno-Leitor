@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Pequeno Leitor | Seu filho lendo em poucas semanas</title>
+<meta name="description" content="O método inspirado na alfabetização americana que está fazendo crianças de 4 a 7 anos lerem em casa, com apenas 15 minutos por dia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FBF6EC;
+  --paper: #F5EDDC;
+  --ink: #1B1410;
+  --ink-soft: #3A2D24;
+  --rust: #C2410C;
+  --rust-deep: #9A3412;
+  --olive: #4D5D3A;
+  --gold: #D4A24C;
+  --rose: #E8C4B8;
+  --line: #2A1F18;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+.serif { font-family: 'Fraunces', serif; }
+
+/* TOPBAR ALERTA */
+.topbar {
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.topbar strong { color: var(--gold); }
+
+/* HERO */
+.hero {
+  padding: 60px 24px 80px;
+  background:
+    radial-gradient(ellipse at top right, rgba(212, 162, 76, 0.15), transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(232, 196, 184, 0.3), transparent 50%),
+    var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(27, 20, 16, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--rust);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 900px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--rust);
+  font-weight: 600;
+}
+
+.hero h1 .underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hero h1 .underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--gold);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.hero p.lead {
+  font-size: clamp(17px, 2vw, 21px);
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.hero-image-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease;
+}
+.hero-image-wrap:hover { transform: rotate(0deg) scale(1.02); }
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 12px 12px 0 var(--ink);
+  background: var(--paper);
+}
+
+/* SEÇÃO DE VÍDEO */
+.video-section {
+  padding: 80px 24px;
+  background: var(--cream);
+  text-align: center;
+}
+.video-section .section-tag { color: var(--rust); }
+.video-section h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.video-section h2 em { font-style: italic; color: var(--rust); font-weight: 600; }
+.video-section .video-lead {
+  font-size: 17px;
+  color: var(--ink-soft);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.video-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  aspect-ratio: 16/9;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 12px 12px 0 var(--ink);
+  overflow: hidden;
+  background: var(--ink);
+}
+.video-wrap video,
+.video-wrap iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+.video-wrap .video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+  padding: 40px;
+}
+.video-wrap .play-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--ink);
+}
+.video-wrap .placeholder-label {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.video-wrap .placeholder-text {
+  font-size: 14px;
+  color: var(--paper);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* IMAGEM DENTRO DO BLOCO DE MÉTODO */
+.metodo-image {
+  width: 100%;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 8px 8px 0 var(--ink);
+  margin-top: 24px;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+/* IMAGEM GRANDE INTERMEDIÁRIA */
+.imagem-quebra {
+  padding: 0 24px 80px;
+  background: var(--cream);
+}
+.imagem-quebra-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  box-shadow: 12px 12px 0 var(--ink);
+  overflow: hidden;
+  aspect-ratio: 21/9;
+  background: var(--paper);
+}
+.imagem-quebra-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* IMAGEM DO KIT NA OFERTA */
+.oferta-kit-image {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 32px;
+  display: block;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  box-shadow: 8px 8px 0 var(--ink);
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+/* AVATARS COM FOTO */
+.avatar-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--rust);
+  color: var(--cream);
+  padding: 22px 36px;
+  border-radius: 100px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.cta-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+  background: var(--rust-deep);
+}
+
+.cta-button .arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.cta-button:hover .arrow { transform: translateX(4px); }
+
+.hero-trust {
+  display: flex;
+  gap: 32px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.hero-trust span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.hero-trust span::before {
+  content: '✓';
+  color: var(--olive);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* SECTION HEADERS */
+.section-tag {
+  display: inline-block;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--rust);
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+.section-title em {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--rust);
+}
+
+/* DOR */
+.dor {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 100px 24px;
+  position: relative;
+}
+
+.dor .section-tag { color: var(--gold); }
+
+.dor h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.1;
+  margin-bottom: 56px;
+  max-width: 900px;
+}
+
+.dor h2 em { font-style: italic; color: var(--gold); font-weight: 600; }
+
+.dor-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.dor-item {
+  background: rgba(251, 246, 236, 0.05);
+  border-left: 3px solid var(--rust);
+  padding: 24px;
+  border-radius: 4px;
+}
+
+.dor-item .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.dor-item p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--cream);
+}
+
+.dor-quote {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 26px);
+  line-height: 1.4;
+  max-width: 800px;
+  border-top: 1px solid rgba(251, 246, 236, 0.2);
+  padding-top: 40px;
+  color: var(--paper);
+}
+
+.dor-quote strong { color: var(--gold); font-style: normal; font-weight: 700; }
+
+/* SOLUÇÃO */
+.solucao {
+  padding: 100px 24px;
+  background: var(--paper);
+}
+
+.solucao-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+@media (max-width: 850px) {
+  .solucao-grid { grid-template-columns: 1fr; gap: 50px; }
+}
+
+.solucao p {
+  font-size: 17px;
+  margin-bottom: 18px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.solucao p strong {
+  color: var(--ink);
+  background: var(--gold);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.solucao-visual {
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 8px 8px 0 var(--ink);
+  position: relative;
+}
+
+.solucao-visual::before {
+  content: 'MÉTODO';
+  position: absolute;
+  top: -12px;
+  left: 30px;
+  background: var(--rust);
+  color: var(--cream);
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 100px;
+}
+
+.solucao-step {
+  display: flex;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px dashed rgba(27, 20, 16, 0.2);
+}
+
+.solucao-step:last-child { border-bottom: none; }
+
+.solucao-step .step-num {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--rust);
+  line-height: 1;
+  min-width: 50px;
+}
+
+.solucao-step .step-text strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.solucao-step .step-text p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* BENEFÍCIOS */
+.beneficios {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.beneficio-card {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 32px 28px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.beneficio-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.beneficio-card .icon {
+  width: 48px;
+  height: 48px;
+  background: var(--ink);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.beneficio-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.beneficio-card p {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+/* DEPOIMENTOS */
+.depoimentos {
+  padding: 100px 24px;
+  background: var(--olive);
+  color: var(--cream);
+  position: relative;
+}
+
+.depoimentos .section-tag { color: var(--gold); }
+
+.depoimentos h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(30px, 4.5vw, 48px);
+  line-height: 1.1;
+  margin-bottom: 56px;
+  max-width: 800px;
+}
+
+.depoimentos h2 em { color: var(--gold); font-style: italic; font-weight: 600; }
+
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.depoimento-card {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 32px 28px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.depoimento-card::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  color: var(--rust);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.depoimento-card .stars {
+  color: var(--gold);
+  font-size: 16px;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.depoimento-card .text {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  color: var(--ink-soft);
+}
+
+.depoimento-card .author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(27, 20, 16, 0.1);
+  padding-top: 16px;
+}
+
+.depoimento-card .avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.depoimento-card .author-info strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.depoimento-card .author-info span {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* OFERTA */
+.oferta {
+  padding: 100px 24px;
+  background: var(--cream);
+  position: relative;
+}
+
+.oferta-box {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 56px 48px;
+  box-shadow: 12px 12px 0 var(--ink);
+  position: relative;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .oferta-box { padding: 40px 28px; }
+}
+
+.oferta-box .ribbon {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--rust);
+  color: var(--cream);
+  padding: 8px 24px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 100px;
+  border: 2px solid var(--ink);
+  text-transform: uppercase;
+}
+
+.oferta-box h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  margin: 12px 0 32px;
+}
+
+.oferta-box h2 em { font-style: italic; color: var(--rust); font-weight: 600; }
+
+.oferta-list {
+  text-align: left;
+  margin: 32px 0;
+  background: var(--cream);
+  padding: 28px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(27, 20, 16, 0.15);
+}
+
+.oferta-list-item {
+  display: flex;
+  align-items: start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(27, 20, 16, 0.15);
+}
+
+.oferta-list-item:last-child { border-bottom: none; }
+
+.oferta-list-item .check {
+  color: var(--olive);
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.oferta-list-item .text {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.oferta-list-item .text strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.oferta-list-item .value {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--rust);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.oferta-total {
+  margin: 32px 0 24px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--ink);
+}
+
+.oferta-total .de {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.oferta-total .de span {
+  text-decoration: line-through;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.oferta-total .por {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+.oferta-total .preco {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 72px);
+  color: var(--rust);
+  line-height: 1;
+  margin: 8px 0;
+  letter-spacing: -0.02em;
+}
+
+.oferta-total .preco small { font-size: 0.4em; vertical-align: top; }
+
+.oferta-total .parcelado {
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+.oferta .cta-button { font-size: 18px; padding: 24px 40px; }
+
+.oferta-garantia {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  padding: 20px;
+  background: var(--cream);
+  border: 1px dashed var(--ink);
+  border-radius: 8px;
+  text-align: left;
+}
+
+.oferta-garantia .selo {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--olive);
+  color: var(--olive);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.oferta-garantia .selo .num { font-size: 22px; }
+.oferta-garantia .selo .label { font-size: 8px; letter-spacing: 1px; }
+
+.oferta-garantia p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.oferta-garantia p strong { color: var(--ink); }
+
+/* FAQ */
+.faq {
+  padding: 100px 24px;
+  background: var(--paper);
+}
+
+.faq-list {
+  max-width: 800px;
+  margin: 56px auto 0;
+}
+
+.faq-item {
+  border-bottom: 1.5px solid var(--ink);
+  padding: 24px 0;
+}
+
+.faq-item summary {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  line-height: 1.3;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  color: var(--rust);
+}
+
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-item p {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* FOOTER CTA */
+.footer-cta {
+  padding: 80px 24px;
+  background: var(--ink);
+  color: var(--cream);
+  text-align: center;
+}
+
+.footer-cta h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-cta h2 em { color: var(--gold); font-style: italic; font-weight: 600; }
+
+.footer-cta p {
+  font-size: 17px;
+  color: var(--paper);
+  margin-bottom: 36px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-cta .cta-button { background: var(--gold); color: var(--ink); border-color: var(--cream); box-shadow: 6px 6px 0 var(--cream); }
+.footer-cta .cta-button:hover { background: var(--cream); box-shadow: 8px 8px 0 var(--cream); }
+
+/* FOOTER */
+footer {
+  background: var(--ink);
+  color: rgba(251, 246, 236, 0.5);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid rgba(251, 246, 236, 0.1);
+}
+
+footer p { margin: 4px 0; }
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ANIMAÇÕES DE ENTRADA */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in { animation: fadeUp 0.8s ease-out backwards; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  ⚡ <strong>OFERTA RELÂMPAGO</strong> &nbsp;•&nbsp; 60% de desconto encerra hoje &nbsp;•&nbsp; Acesso vitalício
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge animate-in">Método Fônico • 4 a 7 anos</div>
+        <h1 class="animate-in delay-1">
+          Seu filho lendo as primeiras palavrinhas em <em>poucas semanas</em>, sem reforço escolar e sem brigas pra fazer atividade.
+        </h1>
+        <p class="lead animate-in delay-2">
+          O Protocolo Pequeno Leitor é o método em PDF, inspirado na alfabetização americana, que combina som e traçado para fazer a criança ler de forma natural com apenas 15 minutos por dia em casa.
+        </p>
+        <a href="#oferta" class="cta-button animate-in delay-3">
+          QUERO MEU FILHO LENDO <span class="arrow">→</span>
+        </a>
+        <div class="hero-trust animate-in delay-3">
+          <span>Acesso vitalício</span>
+          <span>Pode imprimir à vontade</span>
+          <span>Garantia de 7 dias</span>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <!-- IMAGEM 1: Mockup do produto.
+             Recomendado: 800x1000px, mockup do PDF aberto + folhinhas do kit ao lado.
+             Ferramentas grátis: Canva (mockup tablet/papel), Placeit, ou SmartMockups -->
+        <img src="IMAGEM-MOCKUP-PRODUTO.jpg" alt="Protocolo Pequeno Leitor - Material em PDF" class="hero-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO DE VÍDEO -->
+<section class="video-section">
+  <div class="container">
+    <span class="section-tag">— Veja com seus próprios olhos</span>
+    <h2>Crianças <em>aprendendo de verdade</em>, em casa, com o método.</h2>
+    <p class="video-lead">Em menos de 1 minuto você vai entender por que tantas mães estão trocando apostila por esse protocolo.</p>
+
+    <div class="video-wrap">
+      <!-- OPÇÃO 1: Vídeo hospedado direto (MP4)
+           Substitua o src abaixo pelo caminho do seu vídeo (recomendado: 30s a 90s).
+           Formato ideal: MP4, 1920x1080, com legendas embutidas (muita gente assiste sem som).
+
+      <video controls poster="VIDEO-CAPA.jpg" preload="metadata">
+        <source src="SEU-VIDEO.mp4" type="video/mp4">
+      </video>
+      -->
+
+      <!-- OPÇÃO 2: YouTube (descomente e troque o ID do vídeo)
+      <iframe src="https://www.youtube.com/embed/SEU-VIDEO-ID" title="Protocolo Pequeno Leitor" allowfullscreen></iframe>
+      -->
+
+      <!-- OPÇÃO 3: Vimeo (descomente e troque o ID)
+      <iframe src="https://player.vimeo.com/video/SEU-VIDEO-ID" allowfullscreen></iframe>
+      -->
+
+      <!-- PLACEHOLDER (REMOVA quando adicionar o vídeo real acima) -->
+      <div class="video-placeholder">
+        <div class="play-icon">▶</div>
+        <div class="placeholder-label">Espaço reservado para o vídeo</div>
+        <div class="placeholder-text">Apague esta div e descomente uma das 3 opções acima (MP4 próprio, YouTube ou Vimeo).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="container">
+    <span class="section-tag">— Você se reconhece nisso?</span>
+    <h2>Se o seu filho está com 4, 5, 6 ou 7 anos e <em>ainda não consegue ler</em>, o problema não é ele. É o método.</h2>
+
+    <div class="dor-list">
+      <div class="dor-item">
+        <span class="num">i.</span>
+        <p>Você senta pra estudar com ele e em 5 minutos já tem birra, choro ou desistência.</p>
+      </div>
+      <div class="dor-item">
+        <span class="num">ii.</span>
+        <p>A professora avisou que ele está atrasado em relação à turma e isso te apertou o peito.</p>
+      </div>
+      <div class="dor-item">
+        <span class="num">iii.</span>
+        <p>Você já comprou apostila, livro, joguinho, tudo. Cada um vira pó na estante.</p>
+      </div>
+      <div class="dor-item">
+        <span class="num">iv.</span>
+        <p>Ele decora as letras mas na hora de juntar as sílabas trava, esquece, troca.</p>
+      </div>
+      <div class="dor-item">
+        <span class="num">v.</span>
+        <p>O coleguinha da mesma idade já está lendo plaquinhas na rua e o seu não.</p>
+      </div>
+      <div class="dor-item">
+        <span class="num">vi.</span>
+        <p>Você tem medo de pagar reforço caro e mesmo assim não funcionar.</p>
+      </div>
+    </div>
+
+    <p class="dor-quote">
+      A verdade dura: a criança que entra no fundamental sem dominar leitura básica <strong>chega no 1º ano travada</strong>, perde autoestima, e a defasagem só aumenta com o tempo. Quanto mais cedo você agir, mais leve vai ser pra ela.
+    </p>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section class="solucao">
+  <div class="container">
+    <div class="solucao-grid">
+      <div>
+        <span class="section-tag">— A virada</span>
+        <h2 class="section-title">O método que conecta <em>som à letra</em> do jeito que o cérebro infantil entende.</h2>
+        <p>O grafismo fonético é uma técnica usada há décadas em escolas americanas e que está chegando agora no Brasil com força. Em vez de tentar fazer a criança decorar letras soltas, ele <strong>liga o som ao traçado</strong> ao mesmo tempo.</p>
+        <p>O resultado é uma alfabetização natural, sem cobrança, sem chorinho, em que a criança vai descobrindo a leitura com prazer.</p>
+        <p>O Protocolo Pequeno Leitor pega esse método e transforma em mais de 150 páginas de atividades progressivas, organizadas em níveis, prontas pra você imprimir e aplicar em casa.</p>
+      </div>
+      <div class="solucao-visual">
+        <div class="solucao-step">
+          <span class="step-num">01</span>
+          <div class="step-text">
+            <strong>Reconhecimento</strong>
+            <p>A criança aprende a forma e o som de cada letra através de traçados guiados.</p>
+          </div>
+        </div>
+        <div class="solucao-step">
+          <span class="step-num">02</span>
+          <div class="step-text">
+            <strong>Associação</strong>
+            <p>Atividades unindo letra, som e imagem familiar para fixar o aprendizado.</p>
+          </div>
+        </div>
+        <div class="solucao-step">
+          <span class="step-num">03</span>
+          <div class="step-text">
+            <strong>Construção de sílabas</strong>
+            <p>Junção dos sons em sílabas com exercícios visuais e sonoros.</p>
+          </div>
+        </div>
+        <div class="solucao-step">
+          <span class="step-num">04</span>
+          <div class="step-text">
+            <strong>Leitura fluente</strong>
+            <p>Formação de palavras e frases com confiança e autonomia.</p>
+          </div>
+        </div>
+        <!-- IMAGEM 2: Páginas internas do PDF (prova visual de que o material existe).
+             Recomendado: 800x600px, 2 ou 3 páginas do material espalhadas, fundo neutro. -->
+        <img src="IMAGEM-PAGINAS-INTERNAS.jpg" alt="Páginas internas do Protocolo Pequeno Leitor" class="metodo-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="container">
+    <span class="section-tag">— O que muda na sua casa</span>
+    <h2 class="section-title">Em poucas semanas, você vai notar:</h2>
+
+    <div class="beneficios-grid">
+      <div class="beneficio-card">
+        <div class="icon">a</div>
+        <h3>Autoconfiança real</h3>
+        <p>Seu filho começa a tentar ler tudo: a embalagem, a placa, o nome do desenho. A leitura vira diversão, não obrigação.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icon">b</div>
+        <h3>15 minutos por dia</h3>
+        <p>Atividades curtas e visuais que cabem na rotina de qualquer mãe, mesmo a que trabalha fora ou tem outros filhos pra cuidar.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icon">c</div>
+        <h3>Coordenação motora fina</h3>
+        <p>O traçado guiado prepara a mãozinha pra escrita, melhorando a letra e a postura na hora de escrever.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icon">d</div>
+        <h3>Consciência fonológica</h3>
+        <p>Ela passa a ouvir os sons separadamente dentro das palavras, base de toda alfabetização sólida e duradoura.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icon">e</div>
+        <h3>Sem chorinho, sem briga</h3>
+        <p>O formato lúdico transforma o estudo em momento gostoso entre vocês. Adeus aos colapsos na hora da tarefa.</p>
+      </div>
+      <div class="beneficio-card">
+        <div class="icon">f</div>
+        <h3>Vantagem na escola</h3>
+        <p>Quando entrar no 1º ano, ela vai estar à frente da turma. Professora elogia, autoestima dispara, tudo flui.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGEM DE QUEBRA -->
+<section class="imagem-quebra">
+  <div class="imagem-quebra-wrap">
+    <!-- IMAGEM 3: Foto emocional grande (mãe + filho lendo, ou criança feliz com o material).
+         Recomendado: 1600x690px (formato horizontal panorâmico).
+         Pode ser foto sua, do banco gratuito Pexels/Unsplash, ou do próprio uso do produto. -->
+    <img src="IMAGEM-EMOCIONAL.jpg" alt="Mãe e filho usando o Protocolo Pequeno Leitor">
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos">
+  <div class="container">
+    <span class="section-tag">— O que outras mães estão dizendo</span>
+    <h2>Mães que já viraram a chave em <em>casa</em>:</h2>
+
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p class="text">Minha filha tem 5 anos e travava em qualquer atividade de leitura. Em 3 semanas com o protocolo ela já junta sílabas sozinha e tá lendo plaquinha na rua. Eu chorei.</p>
+        <div class="author">
+          <div class="avatar">J</div>
+          <div class="author-info">
+            <strong>Juliana M.</strong>
+            <span>Mãe da Helena, 5 anos</span>
+          </div>
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p class="text">Tentei apostila, joguinho, vídeo no YouTube, nada funcionava. Esse foi o primeiro material que meu filho pediu pra fazer. Ele ama o momento que a gente senta junto.</p>
+        <div class="author">
+          <div class="avatar">P</div>
+          <div class="author-info">
+            <strong>Patrícia L.</strong>
+            <span>Mãe do Theo, 6 anos</span>
+          </div>
+        </div>
+      </div>
+      <div class="depoimento-card">
+        <div class="stars">★★★★★</div>
+        <p class="text">Sou pedagoga e uso com meus alunos do 1º ano. Faz uma diferença absurda nas crianças que tinham dificuldade. Recomendo demais pras mães e professoras.</p>
+        <div class="author">
+          <div class="avatar">R</div>
+          <div class="author-info">
+            <strong>Renata S.</strong>
+            <span>Pedagoga e mãe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta" id="oferta">
+  <div class="container">
+    <div class="oferta-box">
+      <div class="ribbon">Oferta de Lançamento</div>
+
+      <!-- IMAGEM 4: Kit completo (PDF principal + bônus empilhados visualmente).
+           Recomendado: 1000x750px, montagem com todos os mockups dos PDFs juntos.
+           ESSA É A IMAGEM QUE MAIS CONVERTE - capricha aqui! -->
+      <img src="IMAGEM-KIT-COMPLETO.jpg" alt="Kit completo Protocolo Pequeno Leitor com todos os bônus" class="oferta-kit-image">
+
+      <h2>Tudo que vai chegar <em>no seu e-mail</em> hoje:</h2>
+
+      <div class="oferta-list">
+        <div class="oferta-list-item">
+          <span class="check">✓</span>
+          <div class="text">
+            <strong>Protocolo Pequeno Leitor (PDF principal)</strong>
+            +150 páginas de atividades progressivas em 4 níveis.
+          </div>
+          <span class="value">R$ 97</span>
+        </div>
+        <div class="oferta-list-item">
+          <span class="check">✓</span>
+          <div class="text">
+            <strong>Bônus 1 — Plano de 21 dias</strong>
+            Cronograma diário pra mãe seguir sem dúvidas.
+          </div>
+          <span class="value">R$ 47</span>
+        </div>
+        <div class="oferta-list-item">
+          <span class="check">✓</span>
+          <div class="text">
+            <strong>Bônus 2 — Cartelas de Sons</strong>
+            Material de apoio pra imprimir e usar como flashcards.
+          </div>
+          <span class="value">R$ 37</span>
+        </div>
+        <div class="oferta-list-item">
+          <span class="check">✓</span>
+          <div class="text">
+            <strong>Bônus 3 — Guia da Mãe Alfabetizadora</strong>
+            Como conduzir as atividades sem ser pedagoga.
+          </div>
+          <span class="value">R$ 27</span>
+        </div>
+        <div class="oferta-list-item">
+          <span class="check">✓</span>
+          <div class="text">
+            <strong>Bônus 4 — Histórias Fônicas Ilustradas</strong>
+            Pequenas histórias pra praticar leitura com prazer.
+          </div>
+          <span class="value">R$ 37</span>
+        </div>
+      </div>
+
+      <div class="oferta-total">
+        <p class="de">Tudo isso por <span>R$ 245</span></p>
+        <p class="por">Hoje, na oferta de lançamento, sai por:</p>
+        <p class="preco"><small>R$</small>27<small>,90</small></p>
+        <p class="parcelado">ou em até 3x de R$ 9,80 sem juros no cartão</p>
+      </div>
+
+      <a href="#" class="cta-button" id="checkout-btn">
+        QUERO COMEÇAR AGORA <span class="arrow">→</span>
+      </a>
+
+      <div class="oferta-garantia">
+        <div class="selo">
+          <span class="num">7</span>
+          <span class="label">DIAS</span>
+        </div>
+        <p><strong>Garantia incondicional.</strong> Se em 7 dias você sentir que o protocolo não é pra vocês, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <span class="section-tag">— Perguntas frequentes</span>
+    <h2 class="section-title">Antes de você decidir:</h2>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Como recebo o material depois da compra?</summary>
+        <p>Imediatamente após a confirmação do pagamento, você recebe um e-mail com o acesso à área de membros. Lá você baixa todos os PDFs e pode imprimir quantas vezes quiser. O acesso é vitalício.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Meu filho tem 4 anos. Já dá pra começar?</summary>
+        <p>Sim. O protocolo é estruturado em 4 níveis progressivos. O primeiro é justamente para crianças que estão dando os primeiros passos com letras e sons. Você começa do nível certo pra idade dele.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Preciso ter formação em pedagogia pra aplicar?</summary>
+        <p>Não. O protocolo vem com o Guia da Mãe Alfabetizadora, com instruções simples e visuais pra você conduzir cada atividade mesmo sem ser professora. Foi pensado pra mãe comum.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo por dia preciso dedicar?</summary>
+        <p>Apenas 15 minutos por dia. O método foi desenhado pra caber na rotina real de quem trabalha fora, tem outros filhos ou simplesmente quer um aprendizado leve, sem pressão.</p>
+      </details>
+      <details class="faq-item">
+        <summary>E se eu não gostar? Tem garantia?</summary>
+        <p>Tem garantia de 7 dias. Você compra, baixa o material, testa com seu filho. Se não gostar, manda um e-mail e a gente devolve 100% do valor. Sem perguntas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso usar com mais de um filho?</summary>
+        <p>Pode sim. Como o material é pra impressão, você imprime quantas cópias quiser e usa com todos os seus filhos na faixa etária correta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Aceita quais formas de pagamento?</summary>
+        <p>Cartão de crédito (parcelado em até 3x sem juros), Pix e boleto. O processamento é feito pela Cakto, plataforma 100% segura.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <div class="container">
+    <h2>Daqui a 30 dias, você quer estar <em>orgulhosa</em> ou ainda procurando solução?</h2>
+    <p>O tempo de alfabetização não espera. Cada semana que passa é uma semana a menos de janela ideal.</p>
+    <a href="#oferta" class="cta-button">
+      COMEÇAR HOJE POR R$ 27,90 <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Protocolo Pequeno Leitor</strong> • Material digital em PDF</p>
+  <p>Pagamento processado por Cakto • Compra 100% segura</p>
+  <p>Este produto não substitui acompanhamento pedagógico profissional quando necessário.</p>
+</footer>
+
+<script>
+  // Substitua o link abaixo pelo seu link de checkout da Cakto
+  const CHECKOUT_URL = 'https://pay.cakto.com.br/SEU-LINK-AQUI';
+  document.getElementById('checkout-btn').setAttribute('href', CHECKOUT_URL);
+
+  // Animação ao rolar
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.beneficio-card, .depoimento-card, .dor-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
